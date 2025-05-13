@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Watch Video</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Stream Video</h1>
+  <video id="videoPlayer" width="720" controls>
+    <source id="videoSource" src="" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const videoId = urlParams.get('id');
+
+    if (videoId) {
+      document.getElementById('videoSource').src = `/videos/${videoId}.mp4`;
+      document.getElementById('videoPlayer').load();
+    } else {
+      document.body.innerHTML = "<p>Invalid video ID.</p>";
+    }
+  </script>
+</body>
+</html>
